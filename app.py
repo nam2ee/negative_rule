@@ -19,7 +19,10 @@ app.add_middleware(
 )
 
 
-client = OpenAI(api_key="")
+client = OpenAI(
+    api_key="XAI_API_KEY",
+    base_url="https://api.x.ai/v1",
+)
 
 
 class ChatRequest(BaseModel):
@@ -72,7 +75,7 @@ def chat(message, history):
     messages.append({"role": "user", "content": message})
     
     response = client.chat.completions.create(
-        model="gpt-4o",  
+        model="grok-2-latest",  
         messages=messages,
         temperature=0.1,
         max_tokens=10,
